@@ -13,12 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.composable.data.models.ProductModel
 import com.example.composable.ui.home.composables.ProductList
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    onItemClick: (String) -> Unit
+    products: List<ProductModel>,
+    onItemClick: (Int) -> Unit
 ) {
     Column(
         modifier = modifier
@@ -35,7 +37,7 @@ fun HomeScreen(
                 .background(color = Color.Red)
                 .padding(top = 25.dp, bottom = 25.dp, start = 24.dp)
         )
-        ProductList {
+        ProductList(products) {
             onItemClick(it)
         }
     }
@@ -44,5 +46,8 @@ fun HomeScreen(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(onItemClick = {})
+    HomeScreen(
+        products = emptyList(),
+        onItemClick = {}
+    )
 }

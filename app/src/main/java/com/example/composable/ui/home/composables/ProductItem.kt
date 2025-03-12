@@ -28,82 +28,9 @@ import com.example.composable.data.models.ProductModel
 
 @Composable
 fun ProductList(
-    onClick: (String) -> Unit
+    products: List<ProductModel>,
+    onClick: (Int) -> Unit
 ) {
-    val products = listOf(
-        ProductModel(
-            id = 1,
-            name = "Product 1",
-            price = 10.0,
-            imageUrl = R.drawable.food_one,
-            ingredients = listOf("bawang", "bawang putih", "bawang merah"),
-            steps = listOf("boil water for 1 minute", "boil water for 1 minute"),
-            duration = 10
-        ),
-        ProductModel(
-            id = 2,
-            name = "Product 2",
-            price = 20.0,
-            imageUrl = R.drawable.food_two,
-            ingredients = listOf("sibuyas","sibuyas putih","sibuyas merah"),
-            steps = listOf("boil egg for 1 hour", "boil egg for 1 hour"),
-            duration = 10
-        ),
-        ProductModel(
-            id = 3,
-            name = "Product 3",
-            price = 20.0,
-            imageUrl = R.drawable.food_three,
-            ingredients = listOf("toyo","toyo putih","toyo merah"),
-            steps = listOf("boil rice for 1 hour", "boil rice for 1 hour"),
-            duration = 10
-        ),
-        ProductModel(
-            id = 4,
-            name = "Product 4",
-            price = 20.0,
-            imageUrl = R.drawable.food_four,
-            ingredients = listOf("suka","suka putih","suka merah"),
-            steps = listOf("boil sugar for 1 hour", "boil sugar for 1 hour"),
-            duration = 10
-        ),
-        ProductModel(
-            id = 5,
-            name = "Product 5",
-            price = 35.0,
-            imageUrl = R.drawable.food_five,
-            ingredients = listOf("vinegar","vinegar putih","vinegar merah"),
-            steps = listOf("boil vinegar for 1 hour", "boil vinegar for 1 hour"),
-            duration = 10
-        ),
-        ProductModel(
-            id = 6,
-            name = "Product 6",
-            price = 20.0,
-            imageUrl = R.drawable.food_six,
-            ingredients = listOf("tepung","tepung putih","tepung merah"),
-            steps = listOf("boil flour for 1 hour", "boil flour for 1 hour"),
-            duration = 10
-        ),
-        ProductModel(
-            id = 7,
-            name = "Product 7",
-            price = 20.0,
-            imageUrl = R.drawable.food_seven,
-            ingredients = listOf("tepung","tepung putih","tepung merah"),
-            steps = listOf("boil flour for 1 hour", "boil flour for 1 hour"),
-            duration = 10
-        ),
-        ProductModel(
-            id = 8,
-            name = "Product 8",
-            price = 20.0,
-            imageUrl = R.drawable.food_eight,
-            ingredients = listOf(),
-            steps = listOf(),
-            duration = 10
-        )
-    )
     LazyColumn(contentPadding = PaddingValues(12.dp)) {
         items(products) { product ->
             ProductItem(product = product) {
@@ -117,7 +44,7 @@ fun ProductList(
 fun ProductItem(
     product: ProductModel,
     modifier: Modifier = Modifier,
-    onClick: (String) -> Unit
+    onClick: (Int) -> Unit
 ) {
     Card(
         shape = MaterialTheme.shapes.medium,
@@ -128,7 +55,7 @@ fun ProductItem(
         modifier = modifier
             .padding(vertical = 1.dp)
             .clickable {
-                onClick(product.name)
+                onClick(product.id)
             }
     ) {
         Row(

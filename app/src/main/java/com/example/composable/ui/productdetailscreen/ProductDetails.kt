@@ -28,7 +28,7 @@ import com.example.composable.data.models.ProductModel
 @Composable
 fun ProductDetailsScreen(
     modifier: Modifier = Modifier,
-    product: ProductModel,
+    product: ProductModel
 ) {
     Column(
         modifier = modifier
@@ -81,7 +81,6 @@ fun ProductDetailsScreen(
                         modifier = Modifier.size(100.dp)
                     )
                 }
-
             }
             Column(
                 horizontalAlignment = Alignment.Start,
